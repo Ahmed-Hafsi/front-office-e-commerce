@@ -5,25 +5,40 @@
       </div>
       <div class="row clearfix">
         <div class="">
-          <form>
+          <form #f="ngForm">
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-              <input type="email" name="email" placeholder="Email" required />
+              <input type="email" name="email" placeholder="Email" required   ngModel #n="ngModel"/>
+              <div class="alert alert-danger" *ngIf="n.invalid && n.touched ">
+                the email is required field 
+            </div>
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" name="password" placeholder="Password" required />
+              <input type="password" name="password" placeholder="Password" required ngModel #p="ngModel"/>
+              <div class="alert alert-danger" *ngIf="p.invalid && p.touched ">
+                the password is required field 
+            </div>
             </div>
             <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-              <input type="password" name="password" placeholder="Re-type Password" required />
+              <input type="password" name="password" placeholder="Re-type Password" required  ngModel #w="ngModel"/>
+              <div class="alert alert-danger" *ngIf="w.invalid && w.touched ">
+                the re-type password is required field 
+            </div>
             </div>
             <div class="row clearfix">
               <div class="col_half">
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" name="name" placeholder="First Name" />
+                  <input type="text" name="name" placeholder="First Name" ngModel #f="ngModel"/>
+                  <div class="alert alert-danger" *ngIf="f.invalid && f.touched ">
+                  First Name is required field 
+                </div>
                 </div>
               </div>
               <div class="col_half">
                 <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                  <input type="text" name="name" placeholder="Last Name" required />
+                  <input type="text" name="name" placeholder="Last Name" required ngModel #l="ngModel" />
+                  <div class="alert alert-danger" *ngIf="l.invalid && l.touched ">
+                    Last Name is required field 
+                  </div>
                 </div>
               </div>
             </div>
@@ -36,8 +51,8 @@
                 <div class="input_field select_option">
                   <select>
                     <option>Select a country</option>
-                    <option>Option 1</option>
-                    <option>Option 2</option>
+                    <option>Beja</option>
+                    <option>Tunis</option>
                   </select>
                   <div class="select_arrow"></div>
                 </div>
@@ -49,10 +64,10 @@
                   <input type="checkbox" id="cb2">
                   <label for="cb2">I want to receive the newsletter</label>
               </div>
-            <input class="button" type="submit" value="Register" />
+            <input class="button" type="submit" value="Register" [disabled]="f.invalid"/>
           </form>
         </div>
       </div>
     </div>
   </div>
-  <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p>
+  <p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">VagaDev</a></p>
